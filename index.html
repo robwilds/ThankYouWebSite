@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.9/angular-sanitize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+    <script   src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
+	<title> Thank you from Rob Wilds </title>
+    <style>
+        body {
+            margin-top: 5%;
+        }
+        
+        #Resume {
+            display: none;
+        }
+        
+        #References {
+            display: none;
+        }
+        
+        #Linkedin {
+            display: none;
+        }
+        
+        a {
+            margin-top: 2%;
+        }
+        
+        #profilepic {
+            max-width: 70%;
+        }
+        
+        .bkbtn {
+            width:200px;
+            margin-bottom: 20px;
+        }
+    </style>
+    
+    <script>  //for angular expression in HTML
+var app = angular.module('resumeApp', ['ngSanitize']);
+app.controller('resumeCtrl', function($scope, $templateCache) {
+    $scope.resHTML = '<h2>RESUME HTML COMING FROM ANGULAR CONTROLLER</h2>';
+    //var template = $templateCache.get('resume.html');
+});
+</script>
+    
+</head>
+
+<body>
+    <div  class="container">
+		<div id="top" class="text-center jumbotron">
+              <img id="profilepic" class="img-fluid" src="robprofile.jpg">
+                <h1 class="text-center display-4">Thank you from Rob Wilds!</h1>
+              <p class="text-center lead">I appreciate you taking the time to reference my page.  If you have any questions, please fill out the contact me form and I'll be in touch within 24 hrs!</p>
+            <p>This site uses a combination of bootstrap for responsive design, jQuery for event monitoring and angular for two way data binding</p>
+
+              <p class="text-center">
+                <a class="btn btn-primary btn-lg" href="https://www.linkedin.com/in/robert-wilds-27680314" role="button">See Linked In Profile</a>
+
+                  
+                <a id="resButton" class="btn btn-primary btn-lg" href="#Resume" role="button">See Resume</a>
+
+                <a id="refButton" class="btn btn-primary btn-lg" href="#References" role="button">See References</a>
+              </p>
+   
+        </div>
+        
+        <div class="jumbotron" id="Resume" ng-app="resumeApp" ng-controller="resumeCtrl">
+            <div ng-include ="'resume.html'"></div>
+
+                <a class="fixed-bottom bkbtn btn btn-danger" role="button">Back to Welcome Page</a>
+        </div>
+    
+        
+            <div class="jumbotron" id="References">
+
+                <img class="img-fluid" src="references.jpg">
+                <p></p>
+                <a class="fixed-bottom bkbtn btn btn-danger" role="button">Back to Welcome Page</a>
+            </div>
+        
+</div> <!--container-->
+<script>
+    
+    $(document).ready(function(){
+
+        $("#resButton").click(function(){
+            $("#top").fadeOut(1000);
+            $('#Resume').fadeIn(1000);
+            $('html, body').animate({scrollTop: '0px'}, 0);
+        });
+        
+        $("#refButton").click(function(){
+            $("#top").fadeOut(1000);
+            $('#References').fadeIn(1000);
+            $('html, body').animate({scrollTop: '0px'}, 0);
+        });
+        
+        $("#linkedinButton").click(function(){
+            $("#top").fadeOut(1000);
+            $('#Linkedin').fadeIn(1000);
+            $('html, body').animate({scrollTop: '0px'}, 0);
+        });
+        
+        $(".bkbtn").click(function(){
+            $('#Resume').fadeOut(1000);
+            $('#References').fadeOut(1000);
+            $("#top").fadeIn(1000);
+            $('html, body').animate({scrollTop: '0px'}, 0);
+        });
+    });
+
+</script>
+        
+        
+        
+	</body>
+
+</html>
